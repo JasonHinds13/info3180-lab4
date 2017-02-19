@@ -17,7 +17,11 @@
 
 <ul>
     {% for fil in files %}
-        <li>{{ fil }}</li>
+        {% if fil.split('/')[-1].endswith('jpg') %}
+            <li><img src="{{ url_for('static', filename='uploads/'+fil.split('/')[-1]) }}"></img></li>
+        {% else %}
+            <li>{{ fil }}</li>
+        {% endif %}
     {% endfor %}
 </ul>
 {% endblock %}
